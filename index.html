@@ -3,63 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selenium UI Automation Practice</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Selenium Playground - UI Automation Practice</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <header>
-    <h1>Selenium UI Automation Practice</h1>
-    <p>Master UI automation with real-world examples!</p>
+    <h1>Selenium Playground</h1>
+    <p>Your Ultimate UI Automation Testing Hub</p>
 </header>
 
 <main>
     <!-- Basic UI Components -->
-    <section id="basic-components">
-        <h2>Basic UI Components</h2>
-        <div class="component">
-            <button id="basic-button">Click Me</button>
-            <input type="text" placeholder="Enter text">
-            <input type="file">
-            <select>
+    <section class="component-section">
+        <h2>Basic UI Elements</h2>
+        <div class="component-grid">
+            <input type="text" id="text-input" placeholder="Enter text">
+            <input type="password" id="password-input" placeholder="Password">
+            <input type="checkbox" id="checkbox"> <label for="checkbox">Check me</label>
+            <input type="radio" name="radio" id="radio1"> <label for="radio1">Option 1</label>
+            <input type="radio" name="radio" id="radio2"> <label for="radio2">Option 2</label>
+            <select id="dropdown">
+                <option value="">Select an option</option>
                 <option value="1">Option 1</option>
                 <option value="2">Option 2</option>
             </select>
-            <label><input type="checkbox"> Checkbox</label>
-            <label><input type="radio" name="radio"> Radio 1</label>
-            <label><input type="radio" name="radio"> Radio 2</label>
+            <button id="basic-btn">Click Me</button>
+            <textarea id="textarea" placeholder="Type here..."></textarea>
         </div>
     </section>
 
     <!-- Advanced UI Components -->
-    <section id="advanced-components">
-        <h2>Advanced UI Components</h2>
-        <div class="component">
-            <button id="modal-button">Open Modal</button>
-            <div id="modal" class="modal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <p>This is a modal!</p>
-                </div>
-            </div>
-            <div class="tooltip">Hover over me
-                <span class="tooltiptext">Tooltip text</span>
-            </div>
-            <input type="text" id="autocomplete" placeholder="Autocomplete">
-            <div id="slider"></div>
-            <input type="date">
+    <section class="component-section">
+        <h2>Advanced Features</h2>
+        <div class="component-grid">
+            <div id="dynamic-content">Loading...</div>
+            <button id="load-ajax">Load AJAX Data</button>
+            <div id="draggable" draggable="true">Drag Me</div>
+            <div id="dropzone">Drop Here</div>
+            <input type="file" id="file-upload">
+            <progress id="progress-bar" value="0" max="100"></progress>
+            <button id="toggle-modal">Open Modal</button>
         </div>
     </section>
 
-    <!-- Dynamic Content -->
-    <section id="dynamic-content">
-        <h2>Dynamic Content</h2>
-        <button id="load-content">Load Content</button>
-        <div id="content"></div>
+    <!-- Form for Testing -->
+    <section class="component-section">
+        <h2>Sample Form</h2>
+        <form id="test-form">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <!-- Interactive Table -->
+    <section class="component-section">
+        <h2>Dynamic Table</h2>
+        <table id="dynamic-table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <button id="add-row">Add Row</button>
     </section>
 </main>
 
+<!-- Modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span id="close-modal" class="close">&times;</span>
+        <h3>Modal Title</h3>
+        <p>This is a test modal for Selenium practice.</p>
+    </div>
+</div>
+
 <footer>
-    <p>© 2023 Selenium Practice Site. All rights reserved.</p>
+    <p>Created for Selenium UI Automation Practice | 2025</p>
 </footer>
 
 <script src="script.js"></script>

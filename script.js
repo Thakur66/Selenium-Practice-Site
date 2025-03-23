@@ -1,38 +1,51 @@
-// Modal functionality
-const modalButton = document.getElementById("modal-button");
-const modal = document.getElementById("modal");
-const closeButton = document.querySelector(".close");
-
-modalButton.addEventListener("click", () => {
-  modal.style.display = "block";
+// Basic Button Click
+document.getElementById('basic-btn').addEventListener('click', () => {
+    alert('Button clicked!');
 });
 
-closeButton.addEventListener("click", () => {
-  modal.style.display = "none";
+// AJAX Simulation
+document.getElementById('load-ajax').addEventListener('click', () => {
+    setTimeout(() => {
+        document.getElementById('dynamic-content').innerText = 'AJAX Data Loaded!';
+    }, 2000);
 });
 
-window.addEventListener("click", (event) => {
-  if (event.target === modal) {
-    modal.style.display = "none";
-  }
+// Drag and Drop
+const draggable = document.getElementById('draggable');
+const dropzone = document.getElementById('dropzone');
+
+draggable.addEventListener('dragstart', (e) => e.dataTransfer.setData('text', 'dragged'));
+dropzone.addEventListener('dragover', (e) => e.preventDefault());
+dropzone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dropzone.innerText = 'Item Dropped!';
 });
 
-// Dynamic content loading
-const loadContentButton = document.getElementById("load-content");
-const contentDiv = document.getElementById("content");
-
-loadContentButton.addEventListener("click", () => {
-  contentDiv.innerHTML = "<p>This content was loaded dynamically!</p>";
+// Modal Toggle
+const modal = document.getElementById('modal');
+document.getElementById('toggle-modal').addEventListener('click', () => {
+    modal.style.display = 'block';
+});
+document.getElementById('close-modal').addEventListener('click', () => {
+    modal.style.display = 'none';
 });
 
-// Autocomplete functionality
-const autocompleteInput = document.getElementById("autocomplete");
-const suggestions = ["Apple", "Banana", "Cherry", "Date", "Elderberry"];
+// Dynamic Table
+let rowCount = 0;
+document.getElementById('add-row').addEventListener('click', () => {
+    rowCount++;
+    const tbody = document.querySelector('#dynamic-table tbody');
+    const row = `<tr><td>${rowCount}</td><td>Item ${rowCount}</td><td><button>Delete</button></td></tr>`;
+    tbody.insertAdjacentHTML('beforeend', row);
+});
 
-autocompleteInput.addEventListener("input", () => {
-  const userInput = autocompleteInput.value.toLowerCase();
-  const filteredSuggestions = suggestions.filter(item =>
-    item.toLowerCase().includes(userInput)
-  );
-  console.log(filteredSuggestions); // You can display these in a dropdown
+// Progress Bar Simulation
+document.getElementById('file-upload').addEventListener('change', () => {
+    const progress = document.getElementById('progress-bar');
+    let value = 0;
+    const interval = setInterval(() => {
+        value += 10;
+        progress.value = value;
+        if (value >= 100) clearInterval(interval);
+    }, 200);
 });
