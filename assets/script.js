@@ -1,23 +1,29 @@
-// Function to show an alert
+// Show an alert when clicking the CTA button
 function showAlert() {
-    alert("This is a JavaScript alert!");
+    alert("Welcome to Automation Testing Playground! 🚀");
 }
 
-// Function to open a new popup window
-function openPopup() {
-    window.open('https://www.example.com', '_blank', 'width=600,height=400');
+// Handle dropdown selection
+function handleDropdownChange() {
+    let dropdown = document.getElementById("testDropdown");
+    let selectedValue = dropdown.value;
+    alert("You selected: " + selectedValue);
 }
 
-// Function to show a modal
+// Show modal popup
 function showModal() {
     document.getElementById('myModal').style.display = 'block';
 }
 
-// Function to close a modal
+// Close modal
 function closeModal() {
     document.getElementById('myModal').style.display = 'none';
 }
 
-// Function to handle dropdown selection
-function handleDropdownChange() {
-    let dropdown
+// Close modal if clicked outside
+window.onclick = function(event) {
+    let modal = document.getElementById('myModal');
+    if (event.target === modal) {
+        closeModal();
+    }
+};
