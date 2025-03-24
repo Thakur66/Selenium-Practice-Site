@@ -1,41 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Automation Testing Practice</title>
-    <link rel="stylesheet" href="assets/style.css">
-    <script src="assets/script.js" defer></script>
-</head>
-<body>
-<header>
-    <h1>Automation Testing Playground 🚀</h1>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="dropdowns.html">Dropdowns</a>
-        <a href="modals.html">Modals</a>
+<section data-bs-version="5.1" class="menu menu01 scalem5" group="Menu" plugins="DropDown, TouchSwipe" always-top="" global="" once="menu" not-draggable="" position-absolute="">
+
+    <mbr-parameters>
+        <header>Size</header>
+        <input type="checkbox" name="fullWidth" title="Full Width">
+        <header>Show/Hide</header>
+        <input type="checkbox" title="Logo" name="showLogo" checked>
+        <input type="checkbox" title="Brand Name" name="showBrand" checked>
+        <input type="checkbox" title="Menu Items" name="showItems" condition="false">
+        <input type="color" title="Active Color" name="item" value="#000000" condition="showItems">
+        <input type="checkbox" title="Buttons" name="showButtons" checked>
+        <input type="checkbox" title="Icons" name="showIcons">
+        <input type="range" title="Amount" name="iconsAmount" min="0" max="4" step="1" value="2" condition="showIcons">
+        <input type="color" title="Color Icons" name="iconsColor" value="#000000" condition="showIcons">
+        <header>Styles</header>
+        <input type="checkbox" title="Sticky" name="sticky">
+        <input type="checkbox" title="Collapsed" name="collapsed" condition="false">
+        <input type="checkbox" title="Transparent" name="transparent">
+        <input type="range" title="Opacity" name="opacity" min="0" max="1" step="0.1" value="1" condition="transparent">
+        <input type="color" title="Color Menu" name="menuBgColor" value="#ffffff">
+        <input type="color" title="Hamburger" name="hamburgerColor" value="#000000">
+        <input type="color" title="Hamburger Container" name="hamburger" value="#EEEEE9">
+        <input type="checkbox" title="Transparent" name="transparentBg" condition="bg.type === 'color'" checked>
+    </mbr-parameters>
+
+    <nav class="navbar navbar-dropdown" mbr-class="{'navbar-fixed-top':sticky,
+                     'navbar-expand-lg':!collapsed,
+                     'collapsed':collapsed}">
+        <div class="menu_box" mbr-class="{'container': !fullWidth, 'container-fluid': fullWidth}">
+            <div class="navbar-brand d-flex">
+                <span mbr-if="showLogo" class="navbar-logo">
+                    <a href="https://mobiri.se">
+                        <img src="https://r.mobirisesite.com/1327945/assets/images/photo-1496096265110-f83ad7f96608.jpeg" alt="Mobirise" mbr-style="{'height': logoSize + 'rem'}">
+                    </a>
+                </span>
+                <span mbr-if="showBrand" mbr-buttons="" mbr-theme-style="display-7" class="navbar-caption-wrap" data-toolbar="-mbrBtnMove,-mbrBtnAdd,-mbrBtnRemove">
+                    <a class="navbar-caption" data-app-selector=".navbar-caption" href="https://mobiri.se" data-app-placeholder="Type Text">Testify</a>
+                </span>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul mbr-menu="" class="navbar-nav nav-dropdown" mbr-theme-style="display-4" mbr-class="{'nav-right': !showButtons,'navbar-nav-top-padding': isPublish && !showBrand && !showLogo}">
+                    <li class="nav-item">
+                        <a class="nav-link link" href="https://mobirise.com" data-app-selector=".nav-link,.dropdown-item" data-app-placeholder="Type Text">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link" href="https://mobirise.com" data-app-selector=".nav-link,.dropdown-item" data-app-placeholder="Type Text">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link" href="https://mobirise.com" data-app-selector=".nav-link,.dropdown-item" data-app-placeholder="Type Text">Contact</a>
+                    </li>
+                </ul>
+                <div mbr-buttons="" mbr-theme-style="display-4" class="mbr-section-btn-main" mbr-if="showButtons" role="tablist">
+                    <a class="btn btn-primary" href="https://mobiri.se" data-app-placeholder="Type Text">Get Started</a>
+                </div>
+                <div class="icons-menu-main" mbr-if="showIcons">
+                    <a class="iconfont-wrapper" href="https://mobiri.se" target="_blank">
+                        <span mbr-icon="" class="p-2 mbr-iconfont socicon-facebook socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://mobiri.se" target="_blank" mbr-if="iconsAmount > 1">
+                        <span mbr-icon="" class="p-2 mbr-iconfont socicon-twitter socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://mobiri.se" target="_blank" mbr-if="iconsAmount > 2">
+                        <span mbr-icon="" class="p-2 mbr-iconfont socicon-instagram socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://mobiri.se" target="_blank" mbr-if="iconsAmount > 3">
+                        <span mbr-icon="" class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
     </nav>
-</header>
-
-<section class="hero">
-    <h2>Master Selenium UI Testing with Hands-on Practice!</h2>
-    <p>Practice automation scripts on real-world scenarios.</p>
-    <button class="cta-btn" onclick="showAlert()">Get Started</button>
 </section>
-
-<section class="features">
-    <div class="feature-card">
-        <h3>Dropdowns</h3>
-        <p>Automate dropdown selection tests.</p>
-        <a href="dropdowns.html">Try Now</a>
-    </div>
-    <div class="feature-card">
-        <h3>Modals & Popups</h3>
-        <p>Handle modal popups in automation.</p>
-        <a href="modals.html">Try Now</a>
-    </div>
-</section>
-
-<footer>
-    <p>© 2025 Quantum Test | Built for Selenium Testing</p>
-</footer>
-</body>
-</html>
