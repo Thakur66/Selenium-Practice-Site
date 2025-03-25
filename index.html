@@ -3,58 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Registration</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Selenium Automation Practice</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="bg-light">
+<body>
+<div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Elements</h2>
+        <div class="menu">
+            <div class="menu-item" onclick="toggleSubMenu('elements-menu')">
+                Elements ▼
+            </div>
+            <div id="elements-menu" class="submenu">
+                <div class="submenu-item" onclick="showContent('textbox')">Text Box</div>
+                <div class="submenu-item" onclick="showContent('checkbox')">Check Box</div>
+                <div class="submenu-item" onclick="showContent('radio')">Radio Button</div>
+                <div class="submenu-item" onclick="showContent('webtables')">Web Tables</div>
+            </div>
 
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action active">Practice Form</a>
-                <a href="login.html" class="list-group-item list-group-item-action">Login</a>
-                <a href="#" class="list-group-item list-group-item-action">Register</a>
+            <div class="menu-item" onclick="toggleSubMenu('forms-menu')">
+                Forms ▼
+            </div>
+            <div id="forms-menu" class="submenu">
+                <div class="submenu-item" onclick="showContent('form')">Practice Form</div>
             </div>
         </div>
-        <div class="col-md-8">
-            <h2>Student Registration Form</h2>
-            <form id="registrationForm">
-                <div class="mb-3">
-                    <label class="form-label">Name:</label>
-                    <input type="text" class="form-control" id="name" placeholder="First Name" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Email:</label>
-                    <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Mobile (10 Digits):</label>
-                    <input type="text" class="form-control" id="mobile" placeholder="Enter Mobile Number" required pattern="\d{10}">
-                </div>
-                <button type="submit" class="btn btn-success">Save</button>
-                <a href="login.html" class="btn btn-primary">Login</a>
-            </form>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content">
+        <div id="textbox" class="content-section">
+            <h2>Text Box</h2>
+            <label>Full Name :</label>
+            <input type="text" placeholder="Full Name">
+            <label>Email :</label>
+            <input type="email" placeholder="name@example.com">
+            <label>Current Address :</label>
+            <textarea placeholder="Current Address"></textarea>
+            <label>Password :</label>
+            <input type="password" placeholder="Password">
+            <button>Submit</button>
+        </div>
+
+        <div id="checkbox" class="content-section">
+            <h2>Check Box</h2>
+            <label><input type="checkbox"> Option 1</label>
+            <label><input type="checkbox"> Option 2</label>
+            <label><input type="checkbox"> Option 3</label>
+        </div>
+
+        <div id="radio" class="content-section">
+            <h2>Radio Button</h2>
+            <label><input type="radio" name="options"> Option A</label>
+            <label><input type="radio" name="options"> Option B</label>
+            <label><input type="radio" name="options"> Option C</label>
+        </div>
+
+        <div id="webtables" class="content-section">
+            <h2>Web Tables</h2>
+            <table border="1">
+                <tr><th>Name</th><th>Age</th><th>City</th></tr>
+                <tr><td>John Doe</td><td>28</td><td>New York</td></tr>
+                <tr><td>Jane Smith</td><td>32</td><td>Chicago</td></tr>
+            </table>
+        </div>
+
+        <div id="form" class="content-section">
+            <h2>Practice Form</h2>
+            <label>Full Name:</label>
+            <input type="text" placeholder="Full Name">
+            <label>Email:</label>
+            <input type="email" placeholder="name@example.com">
+            <label>Phone:</label>
+            <input type="tel" placeholder="Phone Number">
+            <button>Submit</button>
         </div>
     </div>
 </div>
 
-<script>
-    document.getElementById("registrationForm").addEventListener("submit", function(event) {
-        event.preventDefault();
-        const name = document.getElementById("name").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const mobile = document.getElementById("mobile").value.trim();
-
-        if (name === "" || email === "" || mobile === "") {
-            alert("All fields are required!");
-        } else if (!/^\d{10}$/.test(mobile)) {
-            alert("Mobile number must be 10 digits!");
-        } else {
-            alert("Registration Successful!");
-        }
-    });
-</script>
-
+<script src="assets/js/script.js"></script>
 </body>
 </html>
