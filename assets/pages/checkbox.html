@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkbox Hierarchy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .container {
+        margin-top: 20px;
+    }
+    .checkbox-group {
+        border: 1px solid #ddd;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+    }
+    .toggle-btn {
+        cursor: pointer;
+        font-weight: bold;
+        margin-right: 5px;
+        color: #007bff;
+    }
+    .nested {
+        margin-left: 20px;
+        display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h4>Check Box</h4>
+  <hr>
+
+  <!-- Main Level 1 -->
+  <div class="checkbox-group">
+    <span class="toggle-btn" onclick="toggleVisibility('main1')">[+] </span>
+    <input type="checkbox"> Main Level 1
+    <div id="main1" class="nested">
+      <span class="toggle-btn" onclick="toggleVisibility('sub1')">[+] </span>
+      <input type="checkbox"> Sub Level 1
+      <div id="sub1" class="nested">
+        <input type="checkbox"> Last Level 1<br>
+        <input type="checkbox"> Last Level 2<br>
+        <input type="checkbox"> Last Level 3<br>
+        <input type="checkbox"> Last Level 4<br>
+      </div>
+
+      <span class="toggle-btn" onclick="toggleVisibility('sub2')">[+] </span>
+      <input type="checkbox"> Sub Level 2
+      <div id="sub2" class="nested">
+        <input type="checkbox"> Last Level 5<br>
+        <input type="checkbox"> Last Level 6<br>
+        <input type="checkbox"> Last Level 7<br>
+        <input type="checkbox"> Last Level 8<br>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Level 2 (Same hierarchy as Main Level 1) -->
+  <div class="checkbox-group">
+    <span class="toggle-btn" onclick="toggleVisibility('main2')">[+] </span>
+    <input type="checkbox"> Main Level 2
+    <div id="main2" class="nested">
+      <span class="toggle-btn" onclick="toggleVisibility('sub3')">[+] </span>
+      <input type="checkbox"> Sub Level 3
+      <div id="sub3" class="nested">
+        <input type="checkbox"> Last Level 1<br>
+        <input type="checkbox"> Last Level 2<br>
+        <input type="checkbox"> Last Level 3<br>
+        <input type="checkbox"> Last Level 4<br>
+      </div>
+
+      <span class="toggle-btn" onclick="toggleVisibility('sub4')">[+] </span>
+      <input type="checkbox"> Sub Level 4
+      <div id="sub4" class="nested">
+        <input type="checkbox"> Last Level 5<br>
+        <input type="checkbox"> Last Level 6<br>
+        <input type="checkbox"> Last Level 7<br>
+        <input type="checkbox"> Last Level 8<br>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleVisibility(id) {
+      let element = document.getElementById(id);
+      let btn = element.previousElementSibling;
+      if (element.style.display === "none" || element.style.display === "") {
+          element.style.display = "block";
+          btn.innerHTML = "[-] ";
+      } else {
+          element.style.display = "none";
+          btn.innerHTML = "[+] ";
+      }
+  }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

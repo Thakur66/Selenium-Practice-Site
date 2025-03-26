@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Events</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: white;
+        }
+        .click-btn { background-color: blue; }
+        .right-click-btn { background-color: gray; }
+        .double-click-btn { background-color: green; }
+        .message {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<h2>Buttons</h2>
+<button class="click-btn" onclick="handleClick()">Click Me</button>
+<button class="right-click-btn" oncontextmenu="handleRightClick(event)">Right Click Me</button>
+<button class="double-click-btn" ondblclick="handleDoubleClick()">Double Click Me</button>
+
+<p id="clickMessage" class="message"></p>
+<p id="doubleClickMessage" class="message"></p>
+
+<script>
+    function handleClick() {
+        document.getElementById("clickMessage").innerText = "You have done a dynamic click";
+    }
+
+    function handleRightClick(event) {
+        event.preventDefault();
+        document.getElementById("clickMessage").innerText = "You have right-clicked";
+    }
+
+    function handleDoubleClick() {
+        document.getElementById("doubleClickMessage").innerText = "You have Double clicked";
+    }
+</script>
+</body>
+</html>

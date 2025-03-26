@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload and Download</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 50px;
+    }
+    h2 {
+        margin-bottom: 10px;
+    }
+    .container {
+        border-top: 1px solid #ddd;
+        padding-top: 10px;
+        max-width: 400px;
+        margin: auto;
+    }
+    button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    input[type="file"] {
+        margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Upload and Download</h2>
+
+<div class="container">
+  <h3><b>Download</b></h3>
+  <button onclick="downloadFile()">Download</button>
+
+  <h3><b>Select a File to Upload</b></h3>
+  <label for="fileUpload"><b>Select a file</b></label>
+  <input type="file" id="fileUpload">
+</div>
+
+<script>
+  function downloadFile() {
+      alert("Download button clicked!");
+      // Simulate file download
+  }
+</script>
+
+</body>
+</html>

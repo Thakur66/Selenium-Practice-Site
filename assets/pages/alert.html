@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alert Boxes</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f8f9fa;
+        flex-direction: column;
+    }
+    .container {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        text-align: left;
+        width: 450px;
+    }
+    h2 {
+        text-align: center;
+    }
+    .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 0;
+    }
+    button {
+        background-color: #007bff;
+        color: white;
+        padding: 8px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Alerts</h2>
+
+  <div class="row">
+    <p>Click Button to see alert</p>
+    <button onclick="showAlert()">Alert</button>
+  </div>
+
+  <div class="row">
+    <p>On button click, alert will appear after 5 seconds</p>
+    <button onclick="delayedAlert()">Click Me</button>
+  </div>
+
+  <div class="row">
+    <p>On button click, confirm box will appear</p>
+    <button onclick="showConfirm()">Click Me</button>
+  </div>
+
+  <div class="row">
+    <p>On button click, prompt box will appear</p>
+    <button onclick="showPrompt()">Click Me</button>
+  </div>
+</div>
+
+<script>
+  function showAlert() {
+      alert("This is a simple alert!");
+  }
+
+  function delayedAlert() {
+      setTimeout(() => {
+          alert("This alert appeared after 5 seconds!");
+      }, 5000);
+  }
+
+  function showConfirm() {
+      let result = confirm("Are you sure?");
+      if (result) {
+          alert("You clicked OK!");
+      } else {
+          alert("You clicked Cancel!");
+      }
+  }
+
+  function showPrompt() {
+      let userInput = prompt("Please enter your name:");
+      if (userInput) {
+          alert("Hello, " + userInput + "!");
+      } else {
+          alert("You didn't enter anything.");
+      }
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nested Iframe Automation</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        background-color: #f8f9fa;
+    }
+    .container {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 700px;
+    }
+    iframe {
+        width: 100%;
+        height: 250px;
+        border: 2px solid #007bff;
+        border-radius: 5px;
+    }
+    .nested-iframe {
+        width: 90%;
+        height: 150px;
+        border: 2px dashed red;
+        margin-top: 10px;
+    }
+    button {
+        background-color: #007bff;
+        color: white;
+        padding: 8px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        margin: 5px;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    .log {
+        margin-top: 15px;
+        font-size: 14px;
+        color: #333;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Nested Frames</h2>
+  <p>Switch between parent and child frames dynamically</p>
+
+  <h3>Parent Iframe</h3>
+  <iframe id="parentFrame" src="https://www.example.com"></iframe>
+  <br>
+  <button onclick="switchToFrame('parentFrame')">Switch to Parent</button>
+  <button onclick="refreshFrame('parentFrame')">Refresh Parent</button>
+
+  <h3>Child Iframe (Inside Parent)</h3>
+  <iframe id="childFrame" class="nested-iframe" src="https://www.w3schools.com"></iframe>
+  <br>
+  <button onclick="switchToFrame('childFrame')">Switch to Child</button>
+  <button onclick="refreshFrame('childFrame')">Refresh Child</button>
+
+  <h3>Extract Text from Frames</h3>
+  <button onclick="extractText()">Extract Content</button>
+  <p id="frameContent">Extracted text will appear here.</p>
+
+  <div class="log">
+    <strong>Action Log:</strong> <span id="log">No actions yet.</span>
+  </div>
+</div>
+
+<script>
+  function switchToFrame(frameId) {
+      alert("Switched to " + frameId);
+      document.getElementById(frameId).focus();
+      document.getElementById("log").innerText = "Switched to " + frameId;
+  }
+
+  function refreshFrame(frameId) {
+      document.getElementById(frameId).src += '';
+      alert(frameId + " refreshed!");
+      document.getElementById("log").innerText = frameId + " was refreshed.";
+  }
+
+  function extractText() {
+      let parentDoc = document.getElementById("parentFrame").contentWindow.document;
+      let childDoc = document.getElementById("childFrame").contentWindow.document;
+
+      let parentText = parentDoc.body.innerText || "Parent frame content not available!";
+      let childText = childDoc.body.innerText || "Child frame content not available!";
+
+      document.getElementById("frameContent").innerText =
+          "Parent Frame Text: " + parentText + "\nChild Frame Text: " + childText;
+
+      document.getElementById("log").innerText = "Extracted text from frames.";
+  }
+</script>
+
+</body>
+</html>

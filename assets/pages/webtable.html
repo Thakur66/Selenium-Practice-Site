@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Table with LocalStorage</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    h2 {
+        margin-bottom: 10px;
+    }
+    button {
+        padding: 8px 12px;
+        background-color: blue;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+    th {
+        background-color: #f4f4f4;
+    }
+    button.delete {
+        background-color: red;
+    }
+    .modal {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px gray;
+    }
+    .modal-content {
+        text-align: center;
+    }
+    .modal input {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0;
+    }
+    .close {
+        float: right;
+        cursor: pointer;
+        font-size: 20px;
+        color: red;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Web Tables</h2>
+
+<button id="addBtn">Add</button>
+
+<table id="employeeTable">
+  <thead>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Age</th>
+    <th>Email</th>
+    <th>Salary</th>
+    <th>Department</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!-- Data will be dynamically added here -->
+  </tbody>
+</table>
+
+<!-- Modal Form -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Registration Form</h3>
+    <form id="registrationForm">
+      <label>First Name:</label>
+      <input type="text" id="firstName" required>
+
+      <label>Last Name:</label>
+      <input type="text" id="lastName" required>
+
+      <label>Email:</label>
+      <input type="email" id="email" required>
+
+      <label>Age:</label>
+      <input type="number" id="age" required>
+
+      <label>Salary:</label>
+      <input type="number" id="salary" required>
+
+      <label>Department:</label>
+      <input type="text" id="department" required>
+
+      <button type="button" id="submitBtn">Submit</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+      loadTableData(); // Load data when page loads
+
+      document.getElementById("addBtn").addEventListener("click", function () {
+          document.getElementById("modal").style.display = "block";
+      });
+
+      document.querySelector(".close").addEventListener("click", function () {
+          document.getElementById("modal").style.display = "none";
+      });
+
+      document.getElementById("submitBtn").addEventListener("click", function () {
+          addNewRow();
+      });
+  });
+
+  function addNewRow() {
+      let firstName = document.getElementById("firstName").value;
+      let lastName = document.getElementById("lastName").value;
+      let email = document.getElementById("email").value;
+      let age = document.getElementById("age").value;
+      let salary = document.getElementById("salary").value;
+      let department = document.getElementById("department").value;
+
+      if (!firstName || !lastName || !email || !age || !salary || !department) {
+          alert("Please fill all fields!");
+          return;
+      }
+
+      let employeeData = JSON.parse(localStorage.getItem("employees")) || [];
+      employeeData.push({ firstName, lastName, email, age, salary, department });
+
+      localStorage.setItem("employees", JSON.stringify(employeeData));
+
+      appendRowToTable(firstName, lastName, age, email, salary, department);
+      document.getElementById("registrationForm").reset(); // Clear the form
+      document.getElementById("modal").style.display = "none"; // Close modal
+  }
+
+  function loadTableData() {
+      let employeeData = JSON.parse(localStorage.getItem("employees")) || [];
+
+      employeeData.forEach(emp => {
+          appendRowToTable(emp.firstName, emp.lastName, emp.age, emp.email, emp.salary, emp.department);
+      });
+  }
+
+  function appendRowToTable(firstName, lastName, age, email, salary, department) {
+      let table = document.getElementById("employeeTable").getElementsByTagName("tbody")[0];
+      let newRow = table.insertRow();
+
+      newRow.innerHTML = `
+          <td>${firstName}</td>
+          <td>${lastName}</td>
+          <td>${age}</td>
+          <td>${email}</td>
+          <td>${salary}</td>
+          <td>${department}</td>
+          <td><button class="delete" onclick="deleteRow(this)">🗑️</button></td>
+      `;
+  }
+
+  function deleteRow(btn) {
+      let row = btn.parentElement.parentElement;
+      let email = row.cells[3].innerText; // Identify row by email
+
+      let employeeData = JSON.parse(localStorage.getItem("employees")) || [];
+      employeeData = employeeData.filter(emp => emp.email !== email);
+
+      localStorage.setItem("employees", JSON.stringify(employeeData));
+      row.remove();
+  }
+</script>
+
+</body>
+</html>

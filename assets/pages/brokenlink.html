@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Broken Links and Images</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    h2 {
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 5px;
+    }
+    .image-container, .link-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+    img {
+        width: 100px;
+        height: 100px;
+        border: 1px solid #ddd;
+    }
+    a {
+        display: block;
+        margin-top: 10px;
+        font-size: 16px;
+        color: #007bff;
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Broken Links & Images - Selenium Practice</h2>
+
+<div class="image-container">
+  <p><strong>Valid Image</strong></p>
+  <img src="https://via.placeholder.com/100" alt="Valid Image">
+
+  <p><strong>Broken Image</strong></p>
+  <img src="https://invalid-url.com/broken.png" alt="Broken Image">
+</div>
+
+<div class="link-container">
+  <p><strong>Valid Link</strong></p>
+  <a href="https://www.google.com" target="_blank">Click Here for Valid Link</a>
+
+  <p><strong>Broken Link (404 Page)</strong></p>
+  <a href="https://www.invalidwebsite.com/404" target="_blank">Click Here for Broken Link</a>
+</div>
+
+</body>
+</html>

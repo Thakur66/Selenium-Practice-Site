@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Modal Dialogs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            margin: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            min-width: 300px;
+            z-index: 1000;
+            resize: both;
+            overflow: auto;
+        }
+        .modal-header {
+            font-weight: bold;
+            cursor: move;
+        }
+        .modal-close {
+            float: right;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Modal Dialogs</h2>
+    <p>Click on a button to see the modal</p>
+    <button onclick="openModal('smallModal')">Small Modal</button>
+    <button onclick="openModal('largeModal')">Large Modal</button>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<!-- Small Modal -->
+<div id="smallModal" class="modal">
+    <div class="modal-header">
+        Small Modal <span class="modal-close" onclick="closeModal('smallModal')">&times;</span>
+    </div>
+    <p>This is a small modal window.</p>
+</div>
+
+<!-- Large Modal -->
+<div id="largeModal" class="modal" style="width: 500px;">
+    <div class="modal-header">
+        Large Modal <span class="modal-close" onclick="closeModal('largeModal')">&times;</span>
+    </div>
+    <p>This is a large modal window.</p>
+</div>
+
+<script>
+    function openModal(id) {
+        let modal = document.getElementById(id);
+        let overlay = document.getElementById("overlay");
+        modal.style.display = "block";
+        overlay.style.display = "block";
+
+        // Auto-close after 5 seconds
+        setTimeout(() => {
+            closeModal(id);
+        }, 5000);
+    }
+
+    function closeModal(id) {
+        document.getElementById(id).style.display = "none";
+        document.getElementById("overlay").style.display = "none";
+    }
+
+    // Close modal with Escape key
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") {
+            closeModal("smallModal");
+            closeModal("largeModal");
+        }
+    });
+
+    // Make modals draggable
+    document.querySelectorAll(".modal-header").forEach(header => {
+        header.addEventListener("mousedown", function (event) {
+            let modal = event.target.parentElement;
+            let shiftX = event.clientX - modal.getBoundingClientRect().left;
+            let shiftY = event.clientY - modal.getBoundingClientRect().top;
+
+            function moveAt(pageX, pageY) {
+                modal.style.left = pageX - shiftX + "px";
+                modal.style.top = pageY - shiftY + "px";
+            }
+
+            function onMouseMove(event) {
+                moveAt(event.pageX, event.pageY);
+            }
+
+            document.addEventListener("mousemove", onMouseMove);
+
+            modal.onmouseup = function () {
+                document.removeEventListener("mousemove", onMouseMove);
+                modal.onmouseup = null;
+            };
+        });
+    });
+</script>
+
+</body>
+</html>

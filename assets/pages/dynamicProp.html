@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Properties</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 50px;
+    }
+    h2 {
+        margin-bottom: 10px;
+    }
+    .container {
+        border-top: 1px solid #ddd;
+        padding-top: 10px;
+        max-width: 400px;
+        margin: auto;
+    }
+    button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        margin: 10px;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    #hiddenButton {
+        display: none;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Dynamic Properties</h2>
+<p><b>Message will be visible after 5 seconds.</b></p>
+
+<button id="colorChangeButton" onclick="changeColor()">Color Change</button>
+<button id="hiddenButton">Visible After 5 Seconds</button>
+
+<script>
+  function changeColor() {
+      setTimeout(() => {
+          document.getElementById("colorChangeButton").style.backgroundColor = "red";
+      }, 5000);
+  }
+
+  setTimeout(() => {
+      document.getElementById("hiddenButton").style.display = "inline-block";
+  }, 5000);
+</script>
+
+</body>
+</html>

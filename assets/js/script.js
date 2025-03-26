@@ -1,5 +1,5 @@
-// Function to toggle submenu visibility
-function toggleSubMenu(menuId) {
+// Function to toggle menu visibility
+function toggleMenu(menuId) {
     let menu = document.getElementById(menuId);
     menu.style.display = (menu.style.display === "block") ? "none" : "block";
 }
@@ -17,7 +17,7 @@ function showContent(sectionId) {
     document.getElementById(sectionId).style.display = "block";
 }
 
-// Show Text Box by default on page load
+// Show 'Text Box' section by default on page load
 document.addEventListener("DOMContentLoaded", function () {
     showContent('textbox');
 });

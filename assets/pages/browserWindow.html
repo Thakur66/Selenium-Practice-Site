@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browser Windows</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f8f9fa;
+        flex-direction: column;
+    }
+    .container {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    h2 {
+        margin-bottom: 15px;
+    }
+    button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 15px;
+        margin: 5px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Browser Windows</h2>
+  <button onclick="openNewTab()">New Tab</button>
+  <button onclick="openNewWindow()">New Window</button>
+  <button onclick="openMessageWindow()">New Window Message</button>
+</div>
+
+<script>
+  function openNewTab() {
+      window.open("https://example.com", "_blank");
+  }
+
+  function openNewWindow() {
+      window.open("https://example.com", "_blank", "width=800,height=600");
+  }
+
+  function openMessageWindow() {
+      let messageWindow = window.open("", "", "width=400,height=300");
+      messageWindow.document.write("<h2 style='text-align:center;'>Hello! This is a new message window.</h2>");
+  }
+</script>
+
+</body>
+</html>

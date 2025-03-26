@@ -1,0 +1,14 @@
+{
+  "name": "Prakash Mahapatra1",
+  "email": "prakashmohapatra66@gmail.com",
+  "gender": "Male",
+  "mobile": "8904752553",
+  "dob": "2025-03-05",
+  "subjects": "Math",
+  "hobbies": [
+    "Reading"
+  ],
+  "address": "House no 1029,1st flr,16th main,16th cross,BTM 2nd stage",
+  "state": "Karnataka",
+  "city": "Bangalore"
+}

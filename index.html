@@ -3,46 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selenium Automation Practice</title>
+    <title>Selenium Practice</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
 <div class="container">
     <!-- Sidebar -->
-    <div class="sidebar">
-        <h2>Elements</h2>
-        <div class="menu">
-            <div class="menu-item" onclick="toggleSubMenu('elements-menu')">
-                Elements ▼
-            </div>
-            <div id="elements-menu" class="submenu">
-                <div class="submenu-item" onclick="showContent('textbox')">Text Box</div>
-                <div class="submenu-item" onclick="showContent('checkbox')">Check Box</div>
-                <div class="submenu-item" onclick="showContent('radio')">Radio Button</div>
-                <div class="submenu-item" onclick="showContent('webtables')">Web Tables</div>
-            </div>
+    <aside class="sidebar">
+        <h2>Menu</h2>
+        <ul class="menu">
+            <li class="menu-item" onclick="toggleMenu('elements-menu')">Elements ▼</li>
+            <ul id="elements-menu" class="submenu">
+                <li onclick="showContent('textbox')">Text Box</li>
+                <li onclick="showContent('checkbox')">Check Box</li>
+                <li onclick="showContent('radio')">Radio Button</li>
+                <li onclick="showContent('tables')">Web Tables</li>
+            </ul>
 
-            <div class="menu-item" onclick="toggleSubMenu('forms-menu')">
-                Forms ▼
-            </div>
-            <div id="forms-menu" class="submenu">
-                <div class="submenu-item" onclick="showContent('form')">Practice Form</div>
-            </div>
-        </div>
-    </div>
+            <li class="menu-item" onclick="toggleMenu('forms-menu')">Forms ▼</li>
+            <ul id="forms-menu" class="submenu">
+                <li onclick="showContent('form')">Practice Form</li>
+            </ul>
+        </ul>
+    </aside>
 
     <!-- Content Area -->
-    <div class="content">
+    <main class="content">
         <div id="textbox" class="content-section">
             <h2>Text Box</h2>
-            <label>Full Name :</label>
-            <input type="text" placeholder="Full Name">
-            <label>Email :</label>
-            <input type="email" placeholder="name@example.com">
-            <label>Current Address :</label>
-            <textarea placeholder="Current Address"></textarea>
-            <label>Password :</label>
-            <input type="password" placeholder="Password">
+            <label>Full Name:</label>
+            <input type="text" placeholder="Enter your name">
+            <label>Email:</label>
+            <input type="email" placeholder="Enter your email">
             <button>Submit</button>
         </div>
 
@@ -50,22 +43,19 @@
             <h2>Check Box</h2>
             <label><input type="checkbox"> Option 1</label>
             <label><input type="checkbox"> Option 2</label>
-            <label><input type="checkbox"> Option 3</label>
         </div>
 
         <div id="radio" class="content-section">
             <h2>Radio Button</h2>
-            <label><input type="radio" name="options"> Option A</label>
-            <label><input type="radio" name="options"> Option B</label>
-            <label><input type="radio" name="options"> Option C</label>
+            <label><input type="radio" name="radio"> Option A</label>
+            <label><input type="radio" name="radio"> Option B</label>
         </div>
 
-        <div id="webtables" class="content-section">
+        <div id="tables" class="content-section">
             <h2>Web Tables</h2>
             <table border="1">
-                <tr><th>Name</th><th>Age</th><th>City</th></tr>
-                <tr><td>John Doe</td><td>28</td><td>New York</td></tr>
-                <tr><td>Jane Smith</td><td>32</td><td>Chicago</td></tr>
+                <tr><th>Name</th><th>Age</th></tr>
+                <tr><td>John Doe</td><td>28</td></tr>
             </table>
         </div>
 
@@ -74,12 +64,10 @@
             <label>Full Name:</label>
             <input type="text" placeholder="Full Name">
             <label>Email:</label>
-            <input type="email" placeholder="name@example.com">
-            <label>Phone:</label>
-            <input type="tel" placeholder="Phone Number">
+            <input type="email" placeholder="Email">
             <button>Submit</button>
         </div>
-    </div>
+    </main>
 </div>
 
 <script src="assets/js/script.js"></script>
